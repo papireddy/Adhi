@@ -185,8 +185,7 @@ public class solveMIRPTColgen {
 						Route r = new Route(linkDuals[timeIndex], nodeIndex,
 								instance);
 						System.out.println(r.reducedCost + ":<--RouteRCost");
-						if ((r.reducedCost - routeXDuals[timeIndex][nodeIndex]) < 0
-								|| iteration == 0) {
+						if ((r.reducedCost - routeXDuals[timeIndex][nodeIndex]) < 0) {
 							oneMoreIteration = true;
 							routePlans[timeIndex][nodeIndex].add(r);
 							routeVars[timeIndex][nodeIndex]
@@ -212,7 +211,7 @@ public class solveMIRPTColgen {
 				}
 				InventoryPlan i = new InventoryPlan(linkDuals, instance);
 				System.out.println(i.reducedCost + "<--InvRcost");
-				if ((i.reducedCost - invXDual) < 0 || iteration == 0) {
+				if ((i.reducedCost - invXDual) < 0) {
 					oneMoreIteration = true;
 					invPlans.add(i);
 					invVars.add(cplex.numVar(
@@ -222,9 +221,7 @@ public class solveMIRPTColgen {
 				}
 
 				if (!oneMoreIteration) {
-					if (iteration != 0) {
-						break;
-					}
+					break;
 				}
 				System.out
 						.println("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
